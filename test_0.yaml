@@ -740,10 +740,18 @@ proxy-providers:
         type: http
         url: "$subscription_url$"
         interval: $profile-update-interval$
+        path: ./russiadialer.yaml
+        # Добавляем блок заголовков:
+        headers:
+            User-Agent: "$User-Agent$"
+            x-hwid: "$x-hwid$"
+            x-device-os: "$x-device-os$"
+            x-ver-os: "$x-ver-os$"
+            x-device-model: "$x-device-model$"
         health-check:
-          enable: true
-          interval: 600
-          url: http://www.gstatic.com/generate_204
+            enable: true
+            interval: 600
+            url: http://www.gstatic.com/generate_204
         exclude-filter: 🇷🇺|🇸🇪
         remnawave:
             include-proxies: true
