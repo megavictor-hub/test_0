@@ -728,22 +728,29 @@ dns:
       - https://77.88.8.8/dns-query#⚪🔵🔴 RU сайты
       - https://8.8.8.8/dns-query#⚪🔵🔴 RU сайты
       
-proxy-providers:
-    russiadialer:
-        type: http
-        url: "$subscription_url$"
-        interval: $profile-update-interval$
-        path: ./russiadialer.yaml
-        health-check:
-            enable: true
-            interval: 600
-            url: http://www.gstatic.com/generate_204
-        exclude-filter: 🇷🇺|🇸🇪
-        remnawave:
-            include-proxies: true
-        override:
-            dialer-proxy: 🇷🇺 Reality mobile
-            additional-prefix: 'mobile➡️🇷🇺➡️'
+subscription:
+    type: http
+    url: "$subscription_url$"
+    path: ./proxy_providers/subscription.yaml
+    interval: $profile-update-interval$
+    health-check:
+      enable: true
+      lazy: true
+      interval: 600
+      url: https://captive.apple.com/generate_204
+    proxy: DIRECT
+    header:
+      User-Agent:
+      - "$User-Agent$"
+      x-hwid:
+      - "$x-hwid$"
+      x-device-os:
+      - "$x-device-os$"
+      x-ver-os:
+      - "$x-ver-os$"
+      x-device-model:
+      - "$x-device-model$"
+      
 proxies:
   - name: "🇷🇺 Без VPN"
     type: direct
