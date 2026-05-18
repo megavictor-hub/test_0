@@ -752,7 +752,7 @@ proxy-providers:
           x-device-model:
           - "$x-device-model$"
     russiadialer:
-        type: http
+        type: inline
         url: "$subscription_url$"
         path: ./proxy_providers/russiadialer.yaml
         interval: $profile-update-interval$
@@ -767,6 +767,7 @@ proxy-providers:
         override:
             dialer-proxy: 🇷🇺 Reality mobile
             additional-prefix: 'mobile➡️🇷🇺➡️'
+        payload:
       
 proxies:
   - name: "🇷🇺 Без VPN"
