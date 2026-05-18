@@ -727,14 +727,7 @@ dns:
     rule-set:ru-inline,geosite-ru:
       - https://77.88.8.8/dns-query#⚪🔵🔴 RU сайты
       - https://8.8.8.8/dns-query#⚪🔵🔴 RU сайты
-
-proxies:
-  - name: "🇷🇺 Без VPN"
-    type: direct
-    udp: true
-  - name: DNS-OUT
-    type: dns
-
+      
 proxy-providers:
     russiadialer:
         type: http
@@ -751,6 +744,12 @@ proxy-providers:
         override:
             dialer-proxy: 🇷🇺 Reality mobile
             additional-prefix: 'mobile➡️🇷🇺➡️'
+proxies:
+  - name: "🇷🇺 Без VPN"
+    type: direct
+    udp: true
+  - name: DNS-OUT
+    type: dns
 
 proxy-groups:
   - name: 🚫 Недоступные сайты
