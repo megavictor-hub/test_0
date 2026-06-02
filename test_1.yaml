@@ -134,30 +134,44 @@ dns:
       - https://8.8.8.8/dns-query#⚪🔵🔴 RU сайты
 
 proxy-providers:
-  subscription:
-    type: inline
-    path: ./proxy_providers/subscription.yaml
+  russiadialer1:
+    type: http
+    url: "$subscription_url$&include=🇷🇺"
+    path: ./proxy_providers/russiadialer1.yaml
+    interval: $profile-update-interval$
     health-check:
       enable: true
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
-    payload:
-$payload$
-  russiadialer:
-    type: inline
-    path: ./proxy_providers/russiadialer.yaml
+    proxy: DIRECT
+    header:
+      User-Agent: ["$User-Agent$"]
+      x-hwid: ["$x-hwid$"]
+      x-device-os: ["$x-device-os$"]
+      x-ver-os: ["$x-ver-os$"]
+      x-device-model: ["$x-device-model$"]
+      
+  russiadialer2:
+    type: http
+    url: "$subscription_url$&exclude=🇷🇺|🇸🇪"
+    path: ./proxy_providers/russiadialer2.yaml
+    interval: $profile-update-interval$
     health-check:
       enable: true
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
-    exclude-filter: 🇷🇺|🇸🇪
+    proxy: DIRECT
+    header:
+      User-Agent: ["$User-Agent$"]
+      x-hwid: ["$x-hwid$"]
+      x-device-os: ["$x-device-os$"]
+      x-ver-os: ["$x-ver-os$"]
+      x-device-model: ["$x-device-model$"]
     override:
       dialer-proxy: 🇷🇺 Reality mobile
       additional-prefix: 'mobile➡️🇷🇺➡️'
-    payload:
-$payload$
 
 proxies:
   - name: "🇷🇺 Без VPN"
@@ -173,8 +187,8 @@ proxy-groups:
     proxies:
       - 🎲 Любой доступный сервер
     use:
-      - subscription
-      - russiadialer
+      - russiadialer1
+      - russiadialer2
 
   - name: ▶️ YouTube
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
