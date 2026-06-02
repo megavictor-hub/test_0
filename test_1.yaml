@@ -194,15 +194,15 @@ proxy-providers:
       x-device-model:
       - "$x-device-model$"
 
-        russiadialer: # Цепочка из России в другие страны
-        type: inline
-        exclude-filter: 🇷🇺|🇸🇪
-        remnawave:
-            include-proxies: true
-        override:
-            dialer-proxy: 🇷🇺 Reality mobile # Имя хоста, который станет "мостом" для выхода в Европу (может быть прокси-группой)
-            additional-prefix: 'mobile➡️🇷🇺➡️' # Префикс для имени прокси (указывает на мост через РФ)
-        payload:
+    russiadialer: # Цепочка из России в другие страны
+    type: inline
+    exclude-filter: 🇷🇺|🇸🇪
+    remnawave:
+        include-proxies: true
+    override:
+        dialer-proxy: 🇷🇺 Reality mobile # Имя хоста, который станет "мостом" для выхода в Европу (может быть прокси-группой)
+        additional-prefix: 'mobile➡️🇷🇺➡️' # Префикс для имени прокси (указывает на мост через РФ)
+    payload:
 
 proxies:
   - name: "🇷🇺 Без VPN"
