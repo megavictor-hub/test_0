@@ -142,8 +142,6 @@ proxy-providers:
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
-    override:
-      additional-prefix: 'x '
     payload:
 $payload$
   russiadialer:
