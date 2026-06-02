@@ -194,10 +194,10 @@ proxy-providers:
       x-device-model:
       - "$x-device-model$"
 
-  russiadialer: # Провайдер цепочек для Mode 3
+  russiadialer:
     type: http
-    url: "$subscription_url$" # Запрашиваем ту же ссылку
-    path: ./proxy_providers/russiadialer.yaml # Отдельный файл для цепочек!
+    url: "$subscription_url$"
+    path: ./proxy_providers/russiadialer.yaml
     interval: $profile-update-interval$
     health-check:
       enable: true
@@ -216,13 +216,14 @@ proxy-providers:
       - "$x-ver-os$"
       x-device-model:
       - "$x-device-model$"
-    # Специфичные настройки парсера legiz-ru для генерации цепочек:
-    exclude-filter: 🇷🇺|🇸🇪
-    remnawave:
-      include-proxies: true
+    # --- ИСПРАВЛЕННЫЕ ФИЛЬТРЫ И ИМЕНА ХОСТОВ ---
+    # Переводим флаги в Юникод-формат нижнего регистра для регулярки:
+    # \u0001f1f7\u0001f1fa — это 🇷🇺, а \u0001f1f8\u0001f1ea — это 🇸🇪 (Швеция из твоего списка)
+    filter: "(?i)^(?!.*(\u0001f1f7\u0001f1fa|\u0001f1f8\u0001f1ea)).*$"
     override:
-      dialer-proxy: 🇷🇺 Reality mobile
-      additional-prefix: 'mobile➡️🇷🇺➡️'
+      # Указываем имя моста ровно так, как его видит ядро (в кавычках)
+      dialer-proxy: "\U0001F1F7\U0001F1FA Reality mobile"
+      additional-prefix: "mobile➡️🇷🇺➡️"
 
 proxies:
   - name: "🇷🇺 Без VPN"
