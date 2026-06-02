@@ -143,6 +143,10 @@ proxy-providers:
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
+    override:
+      # Добавляем небольшой пробел или маркер в начало, чтобы у ядра не было конфликта
+      # и оно не подставляло суффикс "-subscription" в конец.
+      additional-prefix: "⚡ "
     payload:
 $payload$
 
