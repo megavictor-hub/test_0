@@ -179,7 +179,6 @@ proxy-providers:
       - "$x-ver-os$"
       x-device-model:
       - "$x-device-model$"
-    filter: "(?i)^(?!.*(\u0001f1f7\u0001f1fa|\u0001f1f8\u0001f1ea)).*$"
     override:
       dialer-proxy: "\U0001F1F7\U0001F1FA Reality mobile"
       additional-prefix: "mobile➡️🇷🇺➡️"
