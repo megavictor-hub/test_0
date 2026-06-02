@@ -184,25 +184,23 @@ proxy-providers:
     proxy: DIRECT
     header:
       User-Agent:
-      - "$User-Agent$"
+        - "$User-Agent$"
       x-hwid:
-      - "$x-hwid$"
+        - "$x-hwid$"
       x-device-os:
-      - "$x-device-os$"
+        - "$x-device-os$"
       x-ver-os:
-      - "$x-ver-os$"
+        - "$x-ver-os$"
       x-device-model:
-      - "$x-device-model$"
-
-  russiadialer: # Цепочка из России в другие страны
-    type: inline
-    exclude-filter: 🇷🇺|🇸🇪
+        - "$x-device-model$"
+    
+    # --- ВОТ СЮДА ВШИВАЕТСЯ ЦЕПОЧКА ---
+    exclude-filter: 🇷🇺|🇸🇪  # Исключаем саму РФ из списка заграничных прокси
     remnawave:
-        include-proxies: true
+      include-proxies: true # Говорит скрипту: "возьми скачанные отсюда прокси и примени к ним правила ниже"
     override:
-        dialer-proxy: 🇷🇺 Reality mobile # Имя хоста, который станет "мостом" для выхода в Европу (может быть прокси-группой)
-        additional-prefix: 'mobile➡️🇷🇺➡️' # Префикс для имени прокси (указывает на мост через РФ)
-    payload:
+      dialer-proxy: 🇷🇺 Reality mobile # Имя вашего моста в РФ
+      additional-prefix: 'mobile➡️🇷🇺➡️' # Префикс, который добавится к именам цепочек
 
 proxies:
   - name: "🇷🇺 Без VPN"
