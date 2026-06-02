@@ -156,11 +156,11 @@ $payload$
       interval: 600
       url: https://captive.apple.com/generate_204
     # Фильтруем, убирая РФ и Швецию из цепочек зарубежных сайтов
-    filter: "(?i)^(?!.*(\u0001f1f7\u0001f1fa|\u0001f1f8\u0001f1ea)).*$"
+    exclude-filter: 🇷🇺|🇸🇪
     override:
       # Натравливаем цепочку на имя мобильного прокси, который лежит в первом провайдере
-      dialer-proxy: "\U0001F1F7\U0001F1FA Reality mobile"
-      additional-prefix: "mobile➡️"
+      dialer-proxy: 🇷🇺 Reality mobile
+      additional-prefix: 'mobile➡️🇷🇺➡️'
     payload:
 $payload$
 
