@@ -223,6 +223,7 @@ proxy-providers:
     override:
       dialer-proxy: 🇷🇺 Reality mobile
       additional-prefix: 'mobile➡️🇷🇺➡️'
+    payload:
 
 proxies:
   - name: "🇷🇺 Без VPN"
@@ -248,6 +249,7 @@ proxy-groups:
       - 🚫 Недоступные сайты
     use:
       - subscription
+      - russiadialer
 
   - name: 💬 Discord
     icon: https://cdn.jsdelivr.net/gh/remnawave/templates@main/icons/Discord.png
