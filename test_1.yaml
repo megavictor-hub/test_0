@@ -134,54 +134,35 @@ dns:
       - https://8.8.8.8/dns-query#⚪🔵🔴 RU сайты
 
 proxy-providers:
+  # 1. Сюда панель выгрузит ВСЕ твои прокси как есть
   subscription:
-    type: http
-    url: "$subscription_url$"
+    type: inline
     path: ./proxy_providers/subscription.yaml
-    interval: $profile-update-interval$
     health-check:
       enable: true
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
-    proxy: DIRECT
-    header:
-      User-Agent:
-      - "$User-Agent$"
-      x-hwid:
-      - "$x-hwid$"
-      x-device-os:
-      - "$x-device-os$"
-      x-ver-os:
-      - "$x-ver-os$"
-      x-device-model:
-      - "$x-device-model$"
+    payload:
+$payload$
 
+  # 2. А сюда панель выгрузит ИХ ЖЕ ЕЩЕ РАЗ, но клиент превратит их в цепочки через мост
   russiadialer:
-    type: http
-    url: "$subscription_url$"
+    type: inline
     path: ./proxy_providers/russiadialer.yaml
-    interval: $profile-update-interval$
     health-check:
       enable: true
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
-    proxy: DIRECT
-    header:
-      User-Agent:
-      - "$User-Agent$"
-      x-hwid:
-      - "$x-hwid$"
-      x-device-os:
-      - "$x-device-os$"
-      x-ver-os:
-      - "$x-ver-os$"
-      x-device-model:
-      - "$x-device-model$"
+    # Фильтруем, убирая РФ и Швецию из цепочек зарубежных сайтов
+    filter: "(?i)^(?!.*(\u0001f1f7\u0001f1fa|\u0001f1f8\u0001f1ea)).*$"
     override:
+      # Натравливаем цепочку на имя мобильного прокси, который лежит в первом провайдере
       dialer-proxy: "\U0001F1F7\U0001F1FA Reality mobile"
-      additional-prefix: "mobile➡️🇷🇺➡️"
+      additional-prefix: "mobile➡️"
+    payload:
+$payload$
 
 proxies:
   - name: "🇷🇺 Без VPN"
