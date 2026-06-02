@@ -146,7 +146,7 @@ proxy-providers:
     override:
       # Добавляем небольшой пробел или маркер в начало, чтобы у ядра не было конфликта
       # и оно не подставляло суффикс "-subscription" в конец.
-      additional-prefix: "x "
+      additional-prefix: 'pc '
     payload:
 $payload$
 
