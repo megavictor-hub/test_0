@@ -134,7 +134,6 @@ dns:
       - https://8.8.8.8/dns-query#⚪🔵🔴 RU сайты
 
 proxy-providers:
-  # 1. Сюда панель выгрузит ВСЕ твои прокси как есть
   subscription:
     type: inline
     path: ./proxy_providers/subscription.yaml
@@ -144,11 +143,9 @@ proxy-providers:
       interval: 600
       url: https://captive.apple.com/generate_204
     override:
-      name-prefix: 'x '
+      additional-prefix: 'x '
     payload:
 $payload$
-
-  # 2. А сюда панель выгрузит ИХ ЖЕ ЕЩЕ РАЗ, но клиент превратит их в цепочки через мост
   russiadialer:
     type: inline
     path: ./proxy_providers/russiadialer.yaml
@@ -157,12 +154,10 @@ $payload$
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
-    # Фильтруем, убирая РФ и Швецию из цепочек зарубежных сайтов
     exclude-filter: 🇷🇺|🇸🇪
     override:
-      # Натравливаем цепочку на имя мобильного прокси, который лежит в первом провайдере
       dialer-proxy: 🇷🇺 Reality mobile
-      name-prefix: 'mobile➡️🇷🇺➡️'
+      additional-prefix: 'mobile➡️🇷🇺➡️'
     payload:
 $payload$
 
