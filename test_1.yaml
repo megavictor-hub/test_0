@@ -193,14 +193,16 @@ proxy-providers:
         - "$x-ver-os$"
       x-device-model:
         - "$x-device-model$"
-    
-    # --- ВОТ СЮДА ВШИВАЕТСЯ ЦЕПОЧКА ---
-    exclude-filter: 🇷🇺|🇸🇪  # Исключаем саму РФ из списка заграничных прокси
+
+  russiadialer: # Ваша цепочка как отдельный провайдер
+    type: inline
+    exclude-filter: 🇷🇺|🇸🇪
     remnawave:
-      include-proxies: true # Говорит скрипту: "возьми скачанные отсюда прокси и примени к ним правила ниже"
+      include-proxies: true
     override:
-      dialer-proxy: 🇷🇺 Reality mobile # Имя вашего моста в РФ
-      additional-prefix: 'mobile➡️🇷🇺➡️' # Префикс, который добавится к именам цепочек
+      dialer-proxy: 🇷🇺 Reality mobile # Имя хоста-моста в РФ
+      additional-prefix: 'mobile➡️🇷🇺➡️'
+    payload: [] # !!! ОБЯЗАТЕЛЬНО КВАДРАТНЫЕ СКОБКИ БЕЗ ПРОБЕЛА ПОСЛЕ НИХ !!!
 
 proxies:
   - name: "🇷🇺 Без VPN"
