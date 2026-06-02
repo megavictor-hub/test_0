@@ -143,6 +143,8 @@ proxy-providers:
       lazy: true
       interval: 600
       url: https://captive.apple.com/generate_204
+    override:
+      name-prefix: 'x '
     payload:
 $payload$
 
