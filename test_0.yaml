@@ -32,7 +32,7 @@ enable-process: true
 find-process-mode: always
 mode: rule
 log-level: info
-ipv6: false # true - если используйте ipv6
+ipv6: false
 keep-alive-interval: 30
 unified-delay: true
 
