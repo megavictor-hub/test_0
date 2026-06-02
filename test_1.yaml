@@ -194,7 +194,7 @@ proxy-providers:
       x-device-model:
       - "$x-device-model$"
 
-    russiadialer: # Цепочка из России в другие страны
+  russiadialer: # Цепочка из России в другие страны
     type: inline
     exclude-filter: 🇷🇺|🇸🇪
     remnawave:
