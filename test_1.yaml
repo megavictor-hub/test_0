@@ -194,9 +194,9 @@ proxy-providers:
       x-device-model:
         - "$x-device-model$"
 
-  russiadialer: # Теперь это тоже HTTP-провайдер!
+  russiadialer:
     type: http
-    url: "$subscription_url$" # Клиент сам пойдет по этой ссылке, заберет прокси и сделает цепочку
+    url: "$subscription_url$" # Скачиваем тот же профиль
     path: ./proxy_providers/russiadialer.yaml
     interval: $profile-update-interval$
     health-check:
@@ -216,14 +216,12 @@ proxy-providers:
         - "$x-ver-os$"
       x-device-model:
         - "$x-device-model$"
-    # --- Специфичные настройки для модификации подписки «на лету» внутри Prizrak-Box ---
-    exclude-filter: 🇷🇺|🇸🇪
-    remnawave:
-      include-proxies: true
+    
+    # --- ВМЕСТО REMNAWAVE ИСПОЛЬЗУЕМ СТАНДАРТНЫЙ МЕХАНИЗМ MIHOMO ---
+    filter: "(?i)^(?!.*(🇷🇺|🇸🇪)).*$" # Регулярное выражение: исключает РФ и Швецию из списка
     override:
-      dialer-proxy: 🇷🇺 Reality mobile
-      additional-prefix: 'mobile➡️🇷🇺➡️'
-    payload:
+      dialer-proxy: "🇷🇺 Reality mobile" # Имя вашего моста (обязательно в кавычках!)
+      additional-prefix: "mobile➡️🇷🇺➡️"
 
 proxies:
   - name: "🇷🇺 Без VPN"
